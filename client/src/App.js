@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import SignUp from './components/SignUp';
 import {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 
@@ -15,9 +16,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path={"/testing"}>
-            <h1>Test Route</h1>
-          </Route>
+          <Route path={"/testing"}><SignUp /></Route>
           <Route path={"/"}>
             <h1>Page count: {count}</h1>
           </Route>

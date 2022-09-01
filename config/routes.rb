@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
+  resources :users, only: [:create, :index]
 
   get '*path',
     to: 'fallback#index',

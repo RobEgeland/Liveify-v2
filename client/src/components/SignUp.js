@@ -4,7 +4,7 @@ import { useState } from 'react'
 const SignUp = () => {
     const [errors, setErrors] = useState(null)
     const [user, SetUser] = useState({
-        name: "",
+        username: "",
         age: "",
         password: "",
         password_confirmation: ""
@@ -50,9 +50,9 @@ const SignUp = () => {
         <h1>Sign up for Liveify!</h1>
         {errors ? <div>{errors}</div> : null}
         <div>
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='username'>Username</label>
             <br/>
-            <input id="name" name='name' type={"text"} value={user.name} onChange={handleChange}  />
+            <input id="username" name='username' type={"text"} value={user.username} onChange={handleChange}  />
         </div>
         <div>
             <label htmlFor='age'>Age</label>

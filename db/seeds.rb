@@ -5,11 +5,11 @@
 
 User.destroy_all
 
-User.create(name: "Rob", age: 23, password_digest: BCrypt::Password.create('Rob'))
-User.create(name: "Charlie", age: 19, password_digest: BCrypt::Password.create('Charlie'))
-User.create(name: "Leah", age: 17, password_digest: BCrypt::Password.create('Leah'))
-User.create(name: "Hannah", age: 24, password_digest: BCrypt::Password.create('Hannah'))
-User.create(name: "Lucas", age: 15, password_digest: BCrypt::Password.create('Lucas'))
+User.create(username: "Rob", age: 23, password_digest: BCrypt::Password.create('Rob'))
+User.create(username: "Charlie", age: 19, password_digest: BCrypt::Password.create('Charlie'))
+User.create(username: "Leah", age: 17, password_digest: BCrypt::Password.create('Leah'))
+User.create(username: "Hannah", age: 24, password_digest: BCrypt::Password.create('Hannah'))
+User.create(username: "Lucas", age: 15, password_digest: BCrypt::Password.create('Lucas'))
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)

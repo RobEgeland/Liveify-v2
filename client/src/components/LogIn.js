@@ -1,8 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const LogIn = ({setCurrentUser}) => {
-    const [loggedIn, setLoggedIn] = useState(false)
+const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
     const [errors, setErrors] = useState()
     const [user, setUser] = useState({
         username: "",
@@ -33,8 +32,8 @@ const LogIn = ({setCurrentUser}) => {
                 res.json().then(data => {
                     console.log(data)
                     setCurrentUser(data)
+                    setLoggedIn(true)
                 })
-                setLoggedIn(true)
             }else {
                 res.text().then(error => {
                     setErrors(error)

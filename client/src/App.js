@@ -3,28 +3,28 @@ import './App.css';
 import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
 import LogIn from './components/LogIn';
+import Home from './components/Home';
 import {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 
 function App() {
   const [count, setCount] = useState(0)
   const [currentUser, setCurrentUser] = useState()
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/current-user")
     .then((r) => r.json())
-    .then((data) => setCount(data.count))
+    .then((data) => setCurrentUser(data))
   },[])
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
         <Switch>
-          <Route path={"/signup"}><SignUp /></Route>
-          <Route path={"/login"}><LogIn setCurrentUser={setCurrentUser} /></Route>
-          <Route path={"/"}>
-            <h1>Page count: {count}</h1>
-          </Route>
+          <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
+          <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
+          <Route path={"/"}><Home /></Route>
         </Switch>
       </div>
     </BrowserRouter>

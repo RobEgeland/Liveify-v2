@@ -12,6 +12,14 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def get_current_user
+        if logged_in 
+            render json: current_user, status: :ok 
+        else 
+            render json: {errors: ["No user is logged in"]}, status: :bad_request
+        end
+    end
+
 
     private 
 

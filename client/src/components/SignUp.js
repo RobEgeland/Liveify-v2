@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const SignUp = () => {
+const SignUp = ({setCurrentUser, setLoggedIn}) => {
     const [errors, setErrors] = useState(null)
     const [user, setUser] = useState({
         username: "",
@@ -31,7 +31,11 @@ const SignUp = () => {
         fetch('/users', options)
         .then(res => {
             if(res.ok){
-                res.json().then(data => console.log(data))
+                res.json().then(data => {
+                    console.log(data)
+                    setCurrentUser(data)
+                    setLoggedIn(true)
+                })
             }else {
                 res.text().then(error => {
                     setErrors(error)

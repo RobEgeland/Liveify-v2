@@ -15,11 +15,5 @@ class SessionsController < ApplicationController
         head :no_content
     end
 
-    def logged_in
-        if session[:count]
-            render json: {true: true}
-        else
-            render json: {false: false}
-        end
-    end
+    
 end

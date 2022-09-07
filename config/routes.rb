@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :index]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/logged-in', to: 'sessions#logged_in'
+  get '/current-user', to: 'users#get_current_user'
 
   get '*path',
     to: 'fallback#index',

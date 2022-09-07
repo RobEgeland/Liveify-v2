@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
   resources :users, only: [:create, :index]
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logged-in', to: 'sessions#logged_in'
 
   get '*path',
     to: 'fallback#index',

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
-const LogIn = () => {
+const LogIn = ({setCurrentUser}) => {
     const [loggedIn, setLoggedIn] = useState(false)
+    const [errors, setErrors] = useState()
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -29,21 +30,23 @@ const LogIn = () => {
         fetch('/login', options)
         .then(res => {
             if(res.ok){
-                res.json().then(data => console.log(data))
+                res.json().then(data => {
+                    console.log(data)
+                    setCurrentUser(data)
+                })
                 setLoggedIn(true)
             }else {
                 res.text().then(error => {
+                    setErrors(error)
                     throw new Error(error)
                 })
             }
         })
-        // .catch(error => window.onerror(error))
-        
     }
   return (
     <form onSubmit={handleSubmit}>
         <h1>Log In</h1>
-        {loggedIn ? <div>Hello {user.username}</div> : null}
+        {loggedIn ? <div>Hello {user.username}</div> : <div>{errors}</div>}
         <div>
                 <label htmlFor='username'>Username</label>
                 <br/>

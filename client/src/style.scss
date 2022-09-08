@@ -18,6 +18,8 @@
 // }
 
 ul {
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -41,11 +43,26 @@ li a {
 }
 
 .logo {
+    text-align: center;
     font-size: 20px;
     display: inline-block;
     color: white;
-    text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     
+}
+
+.card {
+    
+    display: flex;
+    flex-direction: column;
+    width: clamp(20rem, calc(20rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: linear-gradient(to right, #FFFFFF, #dad3cb);
+}
+
+.home {
+    background-color: white;
 }

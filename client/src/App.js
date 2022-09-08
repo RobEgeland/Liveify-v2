@@ -14,8 +14,18 @@ function App() {
 
   useEffect(() => {
     fetch("/current-user")
-    .then((r) => r.json())
-    .then((data) => setCurrentUser(data))
+    .then((r) => {
+      if(r.ok){
+        r.json().then((data) => {
+          setCurrentUser(data)
+          setLoggedIn(true)
+        })
+      }else {
+        r.text().then(error => {
+            throw new Error(error)
+        })
+    }
+    })
   },[])
   return (
     <BrowserRouter>

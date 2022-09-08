@@ -32,8 +32,8 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
                 res.json().then(data => {
                     console.log(data)
                     setCurrentUser(data)
-                    setLoggedIn(true)
                 })
+                setLoggedIn(true)
             }else {
                 res.text().then(error => {
                     setErrors(error)

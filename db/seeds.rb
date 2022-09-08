@@ -4,6 +4,9 @@
 # Examples:
 
 User.destroy_all
+Artist.destroy_all
+Concert.destroy_all
+Performance.destroy_all
 
 rob = User.create(username: "Rob", age: 23, password_digest: BCrypt::Password.create('Rob'))
 charlie = User.create(username: "Charlie", age: 19, password_digest: BCrypt::Password.create('Charlie'))

@@ -30,13 +30,13 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    console.log(data)
                     setCurrentUser(data)
                 })
                 setLoggedIn(true)
             }else {
-                res.text().then(error => {
-                    setErrors(error)
+                res.json().then(error => {
+                    console.log(error.error)
+                    setErrors(error.error)
                     throw new Error(error)
                 })
             }
@@ -45,7 +45,7 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
   return (
     <form onSubmit={handleSubmit}>
         <h1>Log In</h1>
-        {loggedIn ? <div>Hello {user.username}</div> : <div>{errors}</div>}
+        {loggedIn ? <div>Hello {user.username}</div> : <div className='error'>{errors}</div>}
         <div>
                 <label htmlFor='username'>Username</label>
                 <br/>

@@ -37,7 +37,8 @@ const SignUp = ({setCurrentUser, setLoggedIn}) => {
                     setLoggedIn(true)
                 })
             }else {
-                res.text().then(error => {
+                res.json().then(error => {
+                    console.log(error.errors)
                     setErrors(error)
                     // setError(error)
                     throw new Error(errors)
@@ -52,7 +53,7 @@ const SignUp = ({setCurrentUser, setLoggedIn}) => {
   return (
     <form onSubmit={handleSubmit}>
         <h1>Sign up for Liveify!</h1>
-        {errors ? <div>{errors}</div> : null}
+        {/* {errors ? <div>{errors}</div> : null} */}
         <div>
             <label htmlFor='username'>Username</label>
             <br/>

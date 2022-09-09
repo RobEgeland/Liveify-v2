@@ -4,6 +4,8 @@ import SignUp from './components/SignUp';
 import NavBar from './components/NavBar';
 import LogIn from './components/LogIn';
 import Home from './components/Home';
+import Artists from './components/Artists';
+import ArtistDetails from './components/ArtistDetails';
 import {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 
@@ -32,6 +34,8 @@ function App() {
       <div className="App">
         <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
         <Switch>
+          <Route path={"/artists/:id"}><ArtistDetails /></Route>
+          <Route path={"/artists"}><Artists /></Route>
           <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
           <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
           <Route path={"/"}><Home /></Route>

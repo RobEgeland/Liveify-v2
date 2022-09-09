@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
   resources :users, only: [:create, :index]
   resources :concerts, only: [:create, :index]
+  resources :artists, only: [:index, :show]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/current-user', to: 'users#get_current_user'

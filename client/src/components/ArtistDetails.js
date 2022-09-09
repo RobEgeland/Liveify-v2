@@ -10,11 +10,12 @@ const ArtistDetails = () => {
         fetch(`/artists/${id}`)
         .then(r => r.json())
         .then(data => {
-            console.log(data.name)
-            setCurrentArtist(data)
+            console.log(data)
+            // setCurrentArtist(data)
         })
+
     }, [])
-    console.log(currentArtist.band_members)
+    // console.log(currentArtist.band_members)
   return (
     <div>
         {/* <h1>{currentArtist.name}</h1>

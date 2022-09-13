@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :index]
   resources :concerts, only: [:create, :index]
   resources :artists, only: [:index, :show]
+  resources :performances, only: [:index]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/current-user', to: 'users#get_current_user'

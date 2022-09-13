@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
 
     def show 
         artist = Artist.find_by!(id: params[:id])
-        render json: artist, status: :ok
+        render json: artist, status: :ok, include: [:genre]
     end
 
     private

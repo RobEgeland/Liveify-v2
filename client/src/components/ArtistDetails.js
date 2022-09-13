@@ -11,18 +11,25 @@ const ArtistDetails = () => {
         .then(r => r.json())
         .then(data => {
             console.log(data)
-            // setCurrentArtist(data)
+            setCurrentArtist(data)
         })
 
     }, [])
-    // console.log(currentArtist.band_members)
-  return (
-    <div>
-        {/* <h1>{currentArtist.name}</h1>
-        <h2>{currentArtist.band_members}</h2> */}
-        {/* <img>{currentArtist.band_img}</img> */}
-    </div>
-  )
+    console.log(currentArtist)
+    if (currentArtist) {
+      return (
+        <div className='artist-detail'>
+            <h1>{currentArtist.name}</h1>
+            <h2>Band Members: {currentArtist.band_members}</h2> 
+            <h2>Genre: {currentArtist.genre.name}</h2>
+            <br/>
+            <img src={currentArtist.band_img}/>
+        </div>
+  )} else {
+    return (
+      <h1>Loading</h1>
+    )
+  }
 }
 
 export default ArtistDetails

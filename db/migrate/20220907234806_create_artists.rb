@@ -4,7 +4,7 @@ class CreateArtists < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :band_members
       t.string :band_img
-
+      t.integer :genre_id
       t.timestamps
     end
   end

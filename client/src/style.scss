@@ -57,7 +57,7 @@ li a {
 .card {
     text-align: center;
     margin: 40px;
-    margin-left: 40px;
+    margin-left: 450px;
     display: flex;
     flex-direction: column;
     width: clamp(20rem, calc(20rem + 2vw), 22rem);
@@ -80,7 +80,7 @@ li a {
 }
 
 .artists {
-    margin: 10px;
+    margin-left: 125px;
     margin-bottom: 10px;
     padding: 5px;
     display: flex;
@@ -91,7 +91,7 @@ li a {
     border-radius: 1em;
     background: white;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2px;
     grid-auto-rows: 15px;
 }
@@ -120,4 +120,19 @@ li a {
     grid-template-columns: repeat(5, 1fr);
     gap: 5px;
     grid-auto-rows: 50px;
+}
+
+.artist-detail {
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-left: 400px;
+    display: flex;
+    flex-direction: column;
+    width: clamp(30rem, calc(30rem + 2vw), 22rem);
+    height: clamp(35rem, calc(35rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: linear-gradient(to right, #FFFFFF, #dad3cb);
 }

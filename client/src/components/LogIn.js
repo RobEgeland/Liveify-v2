@@ -45,7 +45,7 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
   return (
     <form onSubmit={handleSubmit}>
         <h1>Log In</h1>
-        {loggedIn ? <div>Hello {user.username}</div> : <div className='error'>{errors}</div>}
+        {loggedIn ? null : <div className='error'>{errors}</div>}
         <div>
                 <label htmlFor='username'>Username</label>
                 <br/>

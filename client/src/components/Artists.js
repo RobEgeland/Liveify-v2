@@ -1,14 +1,10 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Artists = () => {
-    const [artists, setArtists] = useState([])
-    useEffect(() => {
-        fetch('/artists')
-        .then(r => r.json())
-        .then(data => setArtists(data))
-    }, [])
+const Artists = ({artists, setArtists}) => {
+
+   
 
   return (
     <div>

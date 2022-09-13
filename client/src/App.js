@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Artists from './components/Artists';
 import ArtistDetails from './components/ArtistDetails';
 import NewConcert from './components/NewConcert';
+import UserProfile from './components/UserProfile';
 import {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 
@@ -32,7 +33,6 @@ function App() {
     }
     })
   },[])
-  console.log(currentUser)
   useEffect(() => {
     fetch('/artists')
     .then(r => r.json())
@@ -46,8 +46,9 @@ function App() {
         <Switch>
           <Route path={"/artists/:id"}><ArtistDetails /></Route>
           <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>
-          <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Loading...</h1>}</Route>
+          <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>}</Route>
           <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
+          <Route path={"/my-profile"}><UserProfile /></Route>
           <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
           <Route path={"/"}><Home /></Route>
         </Switch>

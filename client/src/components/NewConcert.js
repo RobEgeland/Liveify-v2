@@ -7,7 +7,7 @@ const NewConcert = ({currentUser, artists}) => {
         location: "",
         review: "",
         user_id: currentUser.id,
-        artist_id: null
+        artist_id: []
     })
 
     function handleChange(e) {
@@ -21,7 +21,7 @@ const NewConcert = ({currentUser, artists}) => {
         console.log(e.target.value)
         setNewConcert({
             ...newConcert,
-            [e.target.name]: e.target.value
+            [e.target.name]: [...newConcert.artist_id, e.target.value]
         })
 
     }
@@ -70,15 +70,23 @@ const NewConcert = ({currentUser, artists}) => {
             <div>
                 <label>Who did you see?</label>
                 <br/>
-                <select name='artist_id' value={newConcert.artist_id} onChange={handleArtistChange}>
-                  <option value='' disabled selected hidden>Artists</option>
-                  {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
+                <select name='artist_id' onChange={handleArtistChange}>
+                <option value='' disabled selected hidden>Artists</option>
+                {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
+                </select>
+                <select name='artist_id' onChange={handleArtistChange}>
+                <option value='' disabled selected hidden>Artists</option>
+                {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
+                </select>
+                <select name='artist_id' onChange={handleArtistChange}>
+                <option value='' disabled selected hidden>Artists</option>
+                {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
                 </select>
             </div>
             <br></br>
             <input type={"submit"} value={"create concert"}/>
         </form>
-      )
+    )
 }
 
 export default NewConcert

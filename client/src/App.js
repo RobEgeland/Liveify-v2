@@ -15,6 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState()
   const [loggedIn, setLoggedIn] = useState(false)
   const [artists, setArtists] = useState([])
+  const [concerts, setConcerts] = useState([])
 
   useEffect(() => {
     setCurrentUser()
@@ -38,6 +39,11 @@ function App() {
     .then(r => r.json())
     .then(data => setArtists(data))
 }, [])
+  useEffect(() => {
+    fetch('/concerts')
+    .then((r) => r.json())
+    .then((data) => setConcerts(data))
+  },[])
 
   return (
     <BrowserRouter>
@@ -48,9 +54,9 @@ function App() {
           <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>
           <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>}</Route>
           <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
-          <Route path={"/my-profile"}><UserProfile /></Route>
+          <Route path={"/my-profile"}>{ currentUser ? <UserProfile currentUser={currentUser} concerts={concerts} /> : <h1>Login/SignUp to view this page</h1>}</Route>
           <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
-          <Route path={"/"}><Home /></Route>
+          <Route path={"/"}><Home concerts={concerts} /></Route>
         </Switch>
       </div>
     </BrowserRouter>

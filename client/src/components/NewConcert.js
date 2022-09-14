@@ -50,9 +50,9 @@ const NewConcert = ({currentUser, artists}) => {
 
     
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='concert-form' onSubmit={handleSubmit}>
             <h1>Add a Concert</h1>
-            <div>
+            <div >
                 <label htmlFor='name'>Concert Name</label>
                 <br/>
                 <input id="name" name='name' type={"text"} value={newConcert.name} onChange={handleChange} />

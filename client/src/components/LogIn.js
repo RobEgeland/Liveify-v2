@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import { useHistory} from 'react-router-dom'
 
 const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
+    const history = useHistory()
     const [errors, setErrors] = useState()
     const [user, setUser] = useState({
         username: "",
@@ -31,8 +33,9 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
             if(res.ok){
                 res.json().then(data => {
                     setCurrentUser(data)
+                    setLoggedIn(true)
                 })
-                setLoggedIn(true)
+                history.push("/")
             }else {
                 res.json().then(error => {
                     console.log(error.error)

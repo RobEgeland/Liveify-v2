@@ -17,6 +17,10 @@
 //     margin: 10px;
 // }
 
+.App {
+    background-image: url(https://i.pinimg.com/originals/aa/96/82/aa9682f9068e4cabb380ef9f2452dd52.jpg);
+}
+
 .navbar {
     box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: 1em;
@@ -70,7 +74,8 @@ li a {
 
 .home {
     list-style:none;
-    background-color: white;
+
+    margin-left: 150px;
 }
 
 .error {
@@ -135,4 +140,19 @@ li a {
     box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
     border-radius: 1em;
     background: linear-gradient(to right, #FFFFFF, #dad3cb);
+}
+
+.concert-form {
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-left: 600px;
+    display: flex;
+    flex-direction: column;
+    width: clamp(30rem, calc(30rem + 2vw), 22rem);
+    height: clamp(35rem, calc(35rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: #00a087;
 }

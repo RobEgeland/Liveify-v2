@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
   resources :users, only: [:create, :index]
-  resources :concerts, only: [:create, :index]
+  resources :concerts
   resources :artists, only: [:index, :show]
   resources :performances, only: [:index]
   post '/login', to: 'sessions#create'

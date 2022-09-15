@@ -1,4 +1,6 @@
 class ConcertsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
     def index 
         concerts = Concert.all 
         render json: concerts, include: [:artists, :user]
@@ -14,10 +16,20 @@ class ConcertsController < ApplicationController
         render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity
     end
 
+    def destroy 
+        concert = Concert.find_by!(id: params[:id])
+        concert.destroy
+        render json: concert, status: :ok
+    end
+
     private 
 
     def concert_params
         params.permit(:name, :location, :review, :user_id)
+    end
+
+    def render_not_found_response
+        render json: {error: "Concert not found"}, status: :not_found
     end
 
 end

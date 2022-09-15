@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-const UpdateConcert = ({concerts}) => {
+const UpdateConcert = ({concerts, artists}) => {
     const { id } = useParams()
     const currentConcert = concerts.filter(concert => concert.id === parseInt(id))
-    const concertArtists = currentConcert.artists
-    console.log(currentConcert[0].artists)
+    const concertArtists = currentConcert[0].artists
+   console.log(concertArtists[1])
     function handleChange() {
 
     }
@@ -39,14 +39,14 @@ const UpdateConcert = ({concerts}) => {
                 <div>
                     <label>Change Who you saw</label>
                     <br/>
-                    <select name='artist_id' value={currentConcert[0].artists[0]} onChange={handleArtistChange}>
-                    {currentConcert[0].artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                    <select name='artist_id' value={concertArtists[0]} onChange={handleArtistChange}>
+                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
-                    <select name='artist_id' value={currentConcert[0].artists[1]} onChange={handleArtistChange}>
-                    {currentConcert[0].artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                    <select name='artist_id' value={concertArtists[1]} onChange={handleArtistChange}>
+                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
-                    <select name='artist_id' value={currentConcert[0].artists[2]} onChange={handleArtistChange}>
-                    {currentConcert[0].artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                    <select name='artist_id' value={concertArtists[2]} onChange={handleArtistChange}>
+                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
                 </div>
                 <input type={"submit"} value={"create concert"}/>

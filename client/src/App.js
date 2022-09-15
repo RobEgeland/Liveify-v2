@@ -54,7 +54,7 @@ function App() {
           <Route path={"/artists/:id"}><ArtistDetails /></Route>
           <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>
           <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>}</Route>
-          <Route path={"/concerts/:id"}><UpdateConcert concerts={concerts} /></Route>
+          <Route path={"/concerts/:id"}><UpdateConcert concerts={concerts} artists={artists} /></Route>
           <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
           <Route path={"/my-profile"}>{ currentUser ? <UserProfile setConcerts={setConcerts} currentUser={currentUser} concerts={concerts} /> : <h1>Login/SignUp to view this page</h1>}</Route>
           <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>

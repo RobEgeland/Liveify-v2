@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const PersonalConcert = ({concert, handleDelete}) => {
     const artists = concert.artists.map((artist) => <li className='artists'>{artist.name}</li>)
@@ -12,7 +13,7 @@ const PersonalConcert = ({concert, handleDelete}) => {
             <p>{artists}</p>
             <br/>
             <button onClick={() => handleDelete(concert.id)}>Delete</button>
-            <button>Update</button>
+            <NavLink to={`concerts/${concert.id}`}><button>Update</button></NavLink>
             <p>By: {concert.user.username}</p>
         </div>
     )

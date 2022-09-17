@@ -18,7 +18,6 @@ const NewConcert = ({currentUser, artists}) => {
     }
 
     function handleArtistChange(e) {
-        console.log(e.target.value)
         setNewConcert({
             ...newConcert,
             [e.target.name]: [...newConcert.artist_id, e.target.value]

@@ -11,9 +11,20 @@ class ArtistsController < ApplicationController
         render json: artist, status: :ok, include: [:genre]
     end
 
+    def create 
+        artist = Artist.create!(artist_params)
+        render json: artist, status: :ok
+    rescue ActiveRecord::RecordInvalid => e 
+        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity
+    end
+
     private
 
-     def render_not_found_response
+    def artist_params
+        params.permit(:name, :band_members, :band_img, :genre_id)
+    end
+
+    def render_not_found_response
         render json: {error: "Artist not found"}, status: :not_found
     end
 end

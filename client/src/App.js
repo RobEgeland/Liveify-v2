@@ -6,6 +6,7 @@ import LogIn from './components/LogIn';
 import Home from './components/Home';
 import Artists from './components/Artists';
 import ArtistDetails from './components/ArtistDetails';
+import NewArtist from './components/NewArtist';
 import NewConcert from './components/NewConcert';
 import UserProfile from './components/UserProfile';
 import UpdateConcert from './components/UpdateConcert';
@@ -53,6 +54,7 @@ function App() {
         <Switch>
           <Route path={"/artists/:id"}><ArtistDetails /></Route>
           <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>
+          <Route path={"/new-artist"}><NewArtist /></Route>
           <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>}</Route>
           <Route path={"/concerts/:id"}><UpdateConcert concerts={concerts} artists={artists} /></Route>
           <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>

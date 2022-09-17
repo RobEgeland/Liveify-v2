@@ -156,3 +156,18 @@ li a {
     border-radius: 1em;
     background: #00a087;
 }
+
+.artist-form {
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-left: 600px;
+    display: flex;
+    flex-direction: column;
+    width: clamp(30rem, calc(30rem + 2vw), 22rem);
+    height: clamp(35rem, calc(35rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background: #00a087;
+}

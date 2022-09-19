@@ -34,6 +34,7 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
                 res.json().then(data => {
                     setCurrentUser(data)
                     setLoggedIn(true)
+                    console.log(data)
                 })
                 history.push("/")
             }else {

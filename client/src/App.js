@@ -20,7 +20,6 @@ function App() {
   const [concerts, setConcerts] = useState([])
 
   useEffect(() => {
-    setCurrentUser()
     fetch("/current-user")
     .then((r) => {
       if(r.ok){

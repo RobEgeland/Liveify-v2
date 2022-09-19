@@ -49,7 +49,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <NavBar setLoggedIn={setLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         <Switch>
           <Route path={"/artists/:id"}><ArtistDetails /></Route>
           <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>

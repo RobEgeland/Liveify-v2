@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({currentUser, setCurrentUser}) => {
+const NavBar = ({currentUser, setCurrentUser, setLoggedIn}) => {
 
   function handleClick() {
     fetch("/logout", {method: "DELETE"})
     setCurrentUser()
+    setLoggedIn(false)
   }
   return (
     <div>

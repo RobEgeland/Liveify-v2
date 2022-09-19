@@ -7,7 +7,9 @@ const NewConcert = ({currentUser, artists}) => {
         location: "",
         review: "",
         user_id: currentUser.id,
-        artist_id: []
+        artist_id1: "",
+        artist_id2: "",
+        artist_id3: ""
     })
 
     function handleChange(e) {
@@ -20,7 +22,7 @@ const NewConcert = ({currentUser, artists}) => {
     function handleArtistChange(e) {
         setNewConcert({
             ...newConcert,
-            [e.target.name]: [...newConcert.artist_id, e.target.value]
+            [e.target.name]: e.target.value
         })
 
     }
@@ -38,7 +40,7 @@ const NewConcert = ({currentUser, artists}) => {
             name: newConcert.name,
             location: newConcert.location,
             review: newConcert.review,
-            artist_id: newConcert.artist_id,
+            artist_id: [parseInt(newConcert.artist_id1), parseInt(newConcert.artist_id2), parseInt(newConcert.artist_id3)],
             user_id: newConcert.user_id
             })
         }
@@ -69,15 +71,15 @@ const NewConcert = ({currentUser, artists}) => {
             <div>
                 <label>Who did you see?</label>
                 <br/>
-                <select name='artist_id' onChange={handleArtistChange}>
+                <select name='artist_id1' onChange={handleArtistChange}>
                 <option value='' disabled selected hidden>Artists</option>
                 {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
                 </select>
-                <select name='artist_id' onChange={handleArtistChange}>
+                <select name='artist_id2' onChange={handleArtistChange}>
                 <option value='' disabled selected hidden>Artists</option>
                 {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
                 </select>
-                <select name='artist_id' onChange={handleArtistChange}>
+                <select name='artist_id3' onChange={handleArtistChange}>
                 <option value='' disabled selected hidden>Artists</option>
                 {artists.map((artist, index) => <option key={index} value={index} >{artist.name}</option>)}
                 </select>

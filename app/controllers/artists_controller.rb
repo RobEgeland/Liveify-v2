@@ -12,6 +12,7 @@ class ArtistsController < ApplicationController
     end
 
     def create 
+        return render json: {errors: "Must Login or Sign Up"}, status: :unauthorized unless session.include? :user_id
         artist = Artist.create!(artist_params)
         render json: artist, status: :ok
     rescue ActiveRecord::RecordInvalid => e 
@@ -27,4 +28,6 @@ class ArtistsController < ApplicationController
     def render_not_found_response
         render json: {error: "Artist not found"}, status: :not_found
     end
+
+    
 end

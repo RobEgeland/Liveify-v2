@@ -15,7 +15,6 @@ const ArtistDetails = () => {
         })
 
     }, [])
-    console.log(currentArtist)
     if (currentArtist) {
       return (
         <div className='artist-detail'>

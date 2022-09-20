@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 const NewArtist = () => {
     const [genres, setGenres] = useState([])
+    const [errors, setErrors] = useState()
     const [newArtist, setNewArtist] = useState({
         name: "",
         band_members: "",
@@ -40,14 +41,24 @@ const NewArtist = () => {
             })
         }
         fetch('/artists', options)
-        .then(res => res.json())
-        .then(data => console.log(data))
+        .then(res => {
+            if(res.ok){
+                res.json().then(data => console.log(data))
+            }else {
+                res.json().then(error => {
+                    console.log(error.errors)
+                    setErrors(error.errors)
+                    throw new Error(error)
+                })
+            }
+        })
     }
 
     if (genres) {
         return (
             <form className='artist-form' onSubmit={handleSubmit}>
                 <h1>Add an Artist</h1>
+                {errors ? <h2 className='error'>{errors}</h2> : null}
                 <div >
                     <label htmlFor='name'>Artist Name</label>
                     <br/>

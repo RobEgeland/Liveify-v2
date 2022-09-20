@@ -1,19 +1,36 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const UpdateConcert = ({concerts, artists}) => {
+const UpdateConcert = ({artists}) => {
     const { id } = useParams()
-    const currentConcert = concerts.filter(concert => concert.id === parseInt(id))
-    const concertArtists = currentConcert[0].artists
     const [updatedConcert, setUpdatedConcert] = useState({
-        name: currentConcert[0].name,
-        location: currentConcert[0].location,
-        review: currentConcert[0].review,
-        user_id: currentConcert[0].user.id,
-        artist_id: [currentConcert[0].artists]
+        name: "",
+        location: "",
+        review: "",
+        user_id: "",
+        artists: []
     })
-    console.log(updatedConcert.artist_id[0][1].name)
+
+    useEffect(() => {
+        fetch(`/concerts/${id}`)
+        .then(res => {
+            if(res.ok) {
+                res.json().then(data => setUpdatedConcert({
+                    name: data.name,
+                    location: data.location,
+                    review: data.review,
+                    user_id: data.user_id,
+                    artists: data.artists
+                }))
+            }else {
+                res.json().then(error => {
+                    console.log(error.error)
+                    
+                })
+            }
+        })
+    },[])
     function handleChange() {
 
     }
@@ -26,13 +43,14 @@ const UpdateConcert = ({concerts, artists}) => {
 
     }
 
-    const artistcards = concertArtists.map(artist => {
+    const artistcards = updatedConcert.artists.map(artist => {
         <select name='artist_id' value={artist.name} onChange={handleArtistChange}>
             {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
         </select>
+        console.log(artist)
     })
     console.log(artistcards)
-    console.log(concertArtists)
+
     if (updatedConcert) {
         return (
             <form className='concert-form' onSubmit={handleSubmit}>
@@ -56,14 +74,14 @@ const UpdateConcert = ({concerts, artists}) => {
                     <label>Change Who you saw</label>
                     <br/>
                     {artistcards}
-                    {/* <select name='artist_id' value={updatedConcert.artist_id[0][0].name} onChange={handleArtistChange}>
-                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                    {/* <select name='artist_id' value={updatedConcert.artist_id[0][1].name} onChange={handleArtistChange}>
+                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
                     <select name='artist_id' value={updatedConcert.artist_id[0][1].name} onChange={handleArtistChange}>
-                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
                     <select name='artist_id' value={updatedConcert.artist_id[0][2].name} onChange={handleArtistChange}>
-                    {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
+                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select> */}
                 </div>
                 <input type={"submit"} value={"create concert"}/>

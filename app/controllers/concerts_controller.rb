@@ -8,6 +8,11 @@ class ConcertsController < ApplicationController
         render json: concerts, include: [:artists, :user]
     end
 
+    def show 
+        concert = Concert.find_by(id: params[:id])
+        render json: concert, status: :ok
+    end
+
     def create 
         concert = Concert.create!(concert_params)
         params[:artist_id].map(&:to_i).each do |id|

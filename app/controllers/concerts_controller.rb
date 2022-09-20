@@ -1,5 +1,7 @@
 class ConcertsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    before_action :authorize 
+    skip_before_action :authorize, only: [:index]
 
     def index 
         concerts = Concert.all 
@@ -30,6 +32,10 @@ class ConcertsController < ApplicationController
 
     def render_not_found_response
         render json: {error: "Concert not found"}, status: :not_found
+    end
+
+    def authorize
+        return render json: {errors: "Must Login or Sign Up"}, status: :unauthorized unless session.include? :user_id
     end
 
 end

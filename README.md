@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# liveify v2!
+Welcome to the new version and improved Liveify. Where you can share your concert memories with the world.

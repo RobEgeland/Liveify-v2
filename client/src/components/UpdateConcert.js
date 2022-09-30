@@ -44,12 +44,15 @@ const UpdateConcert = ({artists}) => {
     }
 
     const artistcards = updatedConcert.artists.map(artist => {
+            // debugger
         <select name='artist_id' value={artist.name} onChange={handleArtistChange}>
             {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
         </select>
         console.log(artist)
     })
     console.log(artistcards)
+
+    // option to delete artists, and add new artist, dont change existing
 
     if (updatedConcert) {
         return (
@@ -74,13 +77,13 @@ const UpdateConcert = ({artists}) => {
                     <label>Change Who you saw</label>
                     <br/>
                     {artistcards}
-                    {/* <select name='artist_id' value={updatedConcert.artist_id[0][1].name} onChange={handleArtistChange}>
+                    {/* <select name='artist_id' value={updatedConcert.artist_id[0].name} onChange={handleArtistChange}>
                         {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
-                    <select name='artist_id' value={updatedConcert.artist_id[0][1].name} onChange={handleArtistChange}>
+                    <select name='artist_id' value={updatedConcert.artist_id[1].name} onChange={handleArtistChange}>
                         {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select>
-                    <select name='artist_id' value={updatedConcert.artist_id[0][2].name} onChange={handleArtistChange}>
+                    <select name='artist_id' value={updatedConcert.artist_id[2].name} onChange={handleArtistChange}>
                         {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
                     </select> */}
                 </div>

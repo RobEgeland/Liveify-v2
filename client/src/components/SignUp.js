@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 const SignUp = ({setCurrentUser, setLoggedIn}) => {
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState()
     const [user, setUser] = useState({
         username: "",
         age: "",
@@ -39,38 +39,23 @@ const SignUp = ({setCurrentUser, setLoggedIn}) => {
             }else {
                 res.json().then(error => {
                     console.log(error.errors)
-                    setErrors(error.errors)
-                    // for (const element in error.errors) {
-                    //     console.log(`${element} ${error.errors[element]}`)
-                    //     // const newErr = error.errors[element]
-                    //     setErrors([
-                    //         ...errors,
-                    //         `${element} ${error.errors[element]}`
-                    //     ])
-                    // }
-                    // setError(error)
+                    const errorAr = []
+                    for (const element in error.errors) {
+                        errorAr.push(` - ${element} ${error.errors[element]} `)
+                    }
+                    setErrors(errorAr)
+
                     throw new Error(errors)
                 })
             }
         })
-        // .catch(error => window.onerror(error))
-        
     }
-    // const errormessages = (errors) => {
-    //     for (const element in errors) {
-    //         <h2>{`${element} ${errors[element]}`}</h2>
-    //     }
-    // }
-
-    const errormessages = errors.forEach((element, array) => {
-        <h2>{array[element]}</h2>
-    })
 
     
   return (
     <form onSubmit={handleSubmit}>
         <h1>Sign up for Liveify!</h1>
-        {errors ? <div>{errormessages}</div> : null}
+        {errors ? <div className='error'>{errors}</div> : null}
         <div>
             <label htmlFor='username'>Username</label>
             <br/>

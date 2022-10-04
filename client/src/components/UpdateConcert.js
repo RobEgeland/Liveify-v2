@@ -31,7 +31,11 @@ const UpdateConcert = ({artists}) => {
             }
         })
     },[])
-    function handleChange() {
+    function handleChange(e) {
+        setUpdatedConcert({
+            ...updatedConcert,
+            [e.target.name]: e.target.value
+        })
 
     }
 
@@ -42,22 +46,14 @@ const UpdateConcert = ({artists}) => {
     function handleArtistChange() {
 
     }
-
-    const artistcards = updatedConcert.artists.map(artist => {
-            // debugger
-        <select name='artist_id' value={artist.name} onChange={handleArtistChange}>
-            {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
-        </select>
-        console.log(artist)
-    })
-    console.log(artistcards)
+    const artistcards = updatedConcert.artists.map(artist => <li key={artist.id} className='artists'>{artist.name}<button>x</button></li>)
+    
 
     // option to delete artists, and add new artist, dont change existing
-
     if (updatedConcert) {
         return (
             <form className='concert-form' onSubmit={handleSubmit}>
-                <h1>Add a Concert</h1>
+                <h1>Update Your Concert</h1>
                 <div >
                     <label htmlFor='name'>Concert Name</label>
                     <br/>
@@ -75,19 +71,11 @@ const UpdateConcert = ({artists}) => {
                 </div>
                 <div>
                     <label>Change Who you saw</label>
-                    <br/>
-                    {artistcards}
-                    {/* <select name='artist_id' value={updatedConcert.artist_id[0].name} onChange={handleArtistChange}>
-                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
-                    </select>
-                    <select name='artist_id' value={updatedConcert.artist_id[1].name} onChange={handleArtistChange}>
-                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
-                    </select>
-                    <select name='artist_id' value={updatedConcert.artist_id[2].name} onChange={handleArtistChange}>
-                        {artists.map((artist) => <option key={artist.id} value={artist.id} >{artist.name}</option>)}
-                    </select> */}
+                    <ul>
+                        {artistcards}
+                    </ul>
                 </div>
-                <input type={"submit"} value={"create concert"}/>
+                <input type={"submit"} value={"update concert"}/>
             </form>
     )
     }else {

@@ -46,7 +46,7 @@ const LogIn = ({setCurrentUser, setLoggedIn, loggedIn}) => {
         })
     }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='artist-form' onSubmit={handleSubmit}>
         <h1>Log In</h1>
         {loggedIn ? null : <div className='error'>{errors}</div>}
         <div>

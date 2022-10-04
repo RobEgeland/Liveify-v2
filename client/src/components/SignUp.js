@@ -53,7 +53,7 @@ const SignUp = ({setCurrentUser, setLoggedIn}) => {
 
     
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='artist-form' onSubmit={handleSubmit}>
         <h1>Sign up for Liveify!</h1>
         {errors ? <div className='error'>{errors}</div> : null}
         <div>

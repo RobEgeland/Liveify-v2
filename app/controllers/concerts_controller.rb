@@ -29,6 +29,19 @@ class ConcertsController < ApplicationController
         render json: concert, status: :ok
     end
 
+    def update
+        concert = Concert.find_by!(id: params[:id])
+        concert.update(concert_params)
+        params[:artists].map(&:to_i).each do |id|
+            Performance.find_or_create_by!(concert_id: concert.id, artist_id: id)
+        end
+        params[:delete_artists].map(&:to_i).each do |id|
+            Performance.delete_at!(artist_id: id)
+        end
+        render json: concert, status: :accepted
+    end
+
+
     private 
 
     def concert_params

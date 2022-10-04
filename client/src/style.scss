@@ -17,8 +17,22 @@
 //     margin: 10px;
 // }
 
-.App {
-    background-image: url(https://i.pinimg.com/originals/aa/96/82/aa9682f9068e4cabb380ef9f2452dd52.jpg);
+// .App {
+//     background-image: url(https://i.pinimg.com/originals/aa/96/82/aa9682f9068e4cabb380ef9f2452dd52.jpg);
+//     background-size: repeat;
+
+//     top: 0; 
+//     left: 0; 
+      
+//     /* Preserve aspet ratio */
+//     min-width: 100%;
+//     min-height: 100%;
+// }
+html {
+    min-height: 100%;
+    background-image: url(liveifybg.jpg);
+    background-size: repeat;
+    
 }
 
 .navbar {

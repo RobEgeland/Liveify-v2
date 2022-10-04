@@ -14,7 +14,6 @@ const UpdateConcert = ({artists}) => {
         user_id: "",
         artists: []
     })
-    const deleteArtists = []
     
 
     useEffect(() => {
@@ -59,9 +58,7 @@ const UpdateConcert = ({artists}) => {
                 review: updatedConcert.review,
                 user_id: updatedConcert.user_id,
                 // need to get artist ids into patch
-                artists: [updatedConcert.artists[0].id, updatedConcert.artists[1].id, updatedConcert.artists[2].id],
-                // need deleted artists id to remove from concert join table 
-                delete_artists: deleteArtists
+                artists: [updatedConcert.artists[0].id, updatedConcert.artists[1].id, updatedConcert.artists[2].id]
             })
         }
         fetch(`/concerts/${id}`, options)
@@ -74,7 +71,6 @@ const UpdateConcert = ({artists}) => {
     function handleArtistDelete(e) {
         e.preventDefault()
         const filteredArtists = updatedConcert.artists.filter(artist => artist.id !== parseInt(e.target.value))
-        deleteArtists.push(e.target.value)
         setUpdatedConcert({
             ...updatedConcert,
             artists: filteredArtists

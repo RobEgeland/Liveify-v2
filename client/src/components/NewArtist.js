@@ -48,7 +48,6 @@ const NewArtist = ({ setArtists, artists }) => {
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    // setNewArtist(data)
                     setArtists([...artists, data])
                 })
                 navigate("/artists")

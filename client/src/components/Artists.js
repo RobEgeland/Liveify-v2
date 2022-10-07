@@ -4,9 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Artists = ({artists}) => {
 
-    // useEffect(() => {
-
-    // },[artists])
+  
    
   if (artists) {
     return (

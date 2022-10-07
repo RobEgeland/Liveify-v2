@@ -1,9 +1,9 @@
 import React from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 const UpdateConcert = ({artists}) => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
     const [newArtist, setNewArtist] = useState(false)
     const [errors, setErrors] = useState()
@@ -64,7 +64,7 @@ const UpdateConcert = ({artists}) => {
         fetch(`/concerts/${id}`, options)
         .then(res => res.json())
         .then(data => console.log(data))
-        history.push("/my-profile")
+        navigate("/my-profile")
         
     }
 

@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const NewConcert = ({currentUser, artists}) => {
+const NewConcert = ({currentUser, artists, addConcert}) => {
+    const navigate = useNavigate()
     const [newConcert, setNewConcert] = useState({
         name: "",
         location: "",
@@ -47,6 +49,8 @@ const NewConcert = ({currentUser, artists}) => {
         fetch('/concerts', options)
         .then(res => res.json())
         .then(data => console.log(data))
+        addConcert(newConcert)
+        navigate("/my-profile")
     }
 
     

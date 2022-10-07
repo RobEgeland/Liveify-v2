@@ -1,14 +1,17 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const NewArtist = () => {
+const NewArtist = ({ setArtists, artists }) => {
+    const navigate = useNavigate()
     const [genres, setGenres] = useState([])
     const [errors, setErrors] = useState()
     const [newArtist, setNewArtist] = useState({
         name: "",
         band_members: "",
         band_img: "",
-        genre_id: ""
+        genre_id: "",
+        id: null
     })
 
     useEffect(() => {
@@ -24,8 +27,9 @@ const NewArtist = () => {
         })
     }
 
-    function handleSubmit(e) {
+    const handleSubmit = e => {
         e.preventDefault()
+        
         const headers = {
             "Accept": "application/json",
             "Content-Type": "application/json"
@@ -43,7 +47,11 @@ const NewArtist = () => {
         fetch('/artists', options)
         .then(res => {
             if(res.ok){
-                res.json().then(data => console.log(data))
+                res.json().then(data => {
+                    // setNewArtist(data)
+                    setArtists([...artists, data])
+                })
+                navigate("/artists")
             }else {
                 res.json().then(error => {
                     console.log(error.errors)
@@ -52,6 +60,8 @@ const NewArtist = () => {
                 })
             }
         })
+        
+        
     }
 
     if (genres) {

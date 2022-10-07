@@ -11,7 +11,7 @@ import NewConcert from './components/NewConcert';
 import UserProfile from './components/UserProfile';
 import UpdateConcert from './components/UpdateConcert';
 import {useState, useEffect} from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 
 function App() {
   const [currentUser, setCurrentUser] = useState()
@@ -46,21 +46,37 @@ function App() {
     .then((data) => setConcerts(data))
   },[])
 
+  function addConcert(newConcert) {
+    setConcerts({
+      ...concerts,
+      newConcert
+    })
+  }
+  // const addArtist = newArtist => {
+  //   setArtists({
+  //     ...artists,
+  //     newArtist
+  //   })
+  // }
+
+ 
+
   return (
     <BrowserRouter>
       <div className="App">
         <NavBar setLoggedIn={setLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />
-        <Switch>
-          <Route path={"/artists/:id"}><ArtistDetails /></Route>
-          <Route path={"/artists"}><Artists artists={artists} setArtists={setArtists} /></Route>
-          <Route path={"/new-artist"}><NewArtist /></Route>
-          <Route path={"/new-concert"}>{ currentUser ? <NewConcert currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>}</Route>
-          <Route path={"/concerts/:id"}><UpdateConcert artists={artists} /></Route>
-          <Route path={"/signup"}><SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
-          <Route path={"/my-profile"}>{ currentUser ? <UserProfile setConcerts={setConcerts} currentUser={currentUser} concerts={concerts} /> : <h1>Login/SignUp to view this page</h1>}</Route>
-          <Route path={"/login"}><LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} /></Route>
-          <Route path={"/"}><Home concerts={concerts} /></Route>
-        </Switch>
+        <Routes>
+          {/* <Route path={"/artists/:id"}><ArtistDetails /></Route> */}
+          <Route path={"/artists/:id"} element={<ArtistDetails />}/>
+          <Route path={"/artists"} element={artists ? <Artists artists={artists} setArtists={setArtists} /> : null} />
+          <Route path={"/new-artist"} element={<NewArtist setArtists={setArtists} artists={artists} />}/>
+          <Route path={"/new-concert"} element={currentUser ? <NewConcert addConcert={addConcert} currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>} />
+          <Route path={"/concerts/:id"} element={<UpdateConcert artists={artists} />}/>
+          <Route path={"/signup"} element={<SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />}/>
+          <Route path={"/my-profile"} element={currentUser ? <UserProfile setConcerts={setConcerts} currentUser={currentUser} concerts={concerts} /> : <h1>Login/SignUp to view this page</h1>}/>
+          <Route path={"/login"} element={<LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />}/>
+          <Route path={"/"} element={<Home concerts={concerts} />}/>
+        </Routes>
       </div>
     </BrowserRouter>
   );

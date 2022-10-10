@@ -64,7 +64,7 @@ function App() {
           <Route path={"/artists"} element={artists ? <Artists artists={artists} setArtists={setArtists} /> : null} />
           <Route path={"/new-artist"} element={<NewArtist setArtists={setArtists} artists={artists} />}/>
           <Route path={"/new-concert"} element={currentUser ? <NewConcert concerts={concerts} setConcerts={setConcerts} currentUser={currentUser} artists={artists} /> : <h1>Login/SignUp to create a concert</h1>} />
-          <Route path={"/concerts/:id"} element={<UpdateConcert artists={artists} />}/>
+          <Route path={"/concerts/:id"} element={<UpdateConcert artists={artists} concerts={concerts} setConcerts={setConcerts} />}/>
           <Route path={"/signup"} element={<SignUp setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />}/>
           <Route path={"/my-profile"} element={currentUser ? <UserProfile setConcerts={setConcerts} currentUser={currentUser} concerts={concerts} /> : <h1>Login/SignUp to view this page</h1>}/>
           <Route path={"/login"} element={<LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} setCurrentUser={setCurrentUser} />}/>

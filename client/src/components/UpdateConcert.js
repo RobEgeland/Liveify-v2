@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const UpdateConcert = ({artists}) => {
+const UpdateConcert = ({artists, concerts, setConcerts}) => {
     const navigate = useNavigate()
     const { id } = useParams()
     const [newArtist, setNewArtist] = useState(false)
@@ -63,7 +63,16 @@ const UpdateConcert = ({artists}) => {
         }
         fetch(`/concerts/${id}`, options)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            const filteredConcerts = concerts.map((concert) => {
+                if (concert.id === data.id) {
+                    return data
+                } else {
+                    return concert
+                }
+            })
+            setConcerts(filteredConcerts)
+        })
         navigate("/my-profile")
         
     }

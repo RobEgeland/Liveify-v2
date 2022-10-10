@@ -20,15 +20,20 @@ const UserProfile = ({currentUser, concerts, setConcerts}) => {
         setConcerts(filteredConcerts)
     }
     const userConcertCards = userConcerts.map(concert => <PersonalConcert concert={concert} handleDelete={handleDelete}  />)
-
-    return (
-        <div>
-            <h1>Hello, {currentUser.username}!</h1>
-            <ul>
-                <li>{userConcertCards}</li>
-            </ul>
-        </div>
-    )
+    if (concerts) {
+        return (
+            <div>
+                <h1>Hello, {currentUser.username}!</h1>
+                <ul>
+                    <li>{userConcertCards}</li>
+                </ul>
+            </div>
+        )
+    }else {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
 }
 
 export default UserProfile

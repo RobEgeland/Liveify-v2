@@ -13,7 +13,7 @@ const PersonalConcert = ({concert, handleDelete}) => {
             <p>{artists}</p>
             <br/>
             <button onClick={() => handleDelete(concert.id)}>Delete</button>
-            <NavLink to={`concerts/${concert.id}`}><button>Update</button></NavLink>
+            <NavLink to={`/concerts/${concert.id}`}><button>Update</button></NavLink>
             <p>By: {concert.user.username}</p>
         </div>
     )

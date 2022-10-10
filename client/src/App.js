@@ -52,13 +52,6 @@ function App() {
       newConcert
     })
   }
-  // const addArtist = newArtist => {
-  //   setArtists({
-  //     ...artists,
-  //     newArtist
-  //   })
-  // }
-
  
 
   return (

@@ -90,7 +90,6 @@ const UpdateConcert = ({artists, concerts, setConcerts}) => {
     function handleNewArtist(e) {
         e.preventDefault()
         const newArtist = artists.filter(artist => artist.id === parseInt(e.target.value) + 1)
-        console.log(newArtist)
         setUpdatedConcert({
             ...updatedConcert,
             artists: [...updatedConcert.artists, newArtist[0]]

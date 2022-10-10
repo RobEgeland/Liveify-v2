@@ -10,7 +10,6 @@ const ArtistDetails = () => {
         fetch(`/artists/${id}`)
         .then(r => r.json())
         .then(data => {
-            console.log(data)
             setCurrentArtist(data)
         })
 

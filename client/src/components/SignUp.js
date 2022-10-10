@@ -32,7 +32,6 @@ const SignUp = ({setCurrentUser, setLoggedIn}) => {
         .then(res => {
             if(res.ok){
                 res.json().then(data => {
-                    console.log(data)
                     setCurrentUser(data)
                     setLoggedIn(true)
                 })

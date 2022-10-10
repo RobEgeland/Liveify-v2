@@ -24,7 +24,6 @@ function App() {
     .then((r) => {
       if(r.ok){
         r.json().then((data) => {
-          console.log(data)
           setCurrentUser(data)
           setLoggedIn(true)
         })

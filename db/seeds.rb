@@ -14,6 +14,9 @@ charlie = User.create(username: "Charlie", age: 19, password_digest: BCrypt::Pas
 leah = User.create(username: "Leah", age: 17, password_digest: BCrypt::Password.create('Leah'))
 hannah = User.create(username: "Hannah", age: 24, password_digest: BCrypt::Password.create('Hannah'))
 lucas = User.create(username: "Lucas", age: 15, password_digest: BCrypt::Password.create('Lucas'))
+larry = User.create(username: "Larry", age: 25, password_digest: BCrypt::Password.create('Larry'))
+ed = User.create(username: "Ed", age: 40, password_digest: BCrypt::Password.create('Ed'))
+jessica = User.create(username: "Jessica", age: 22, password_digest: BCrypt::Password.create('Jessica'))
 
 psych_rock = Genre.create(name: "Psychedelic Rock")
 alt = Genre.create(name: "Alternative")

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/current-user', to: 'users#get_current_user'
+  get '/users/:age', to: 'users#age_limit'
 
   get '*path',
     to: 'fallback#index',

@@ -49,7 +49,7 @@ const UpdateConcert = ({artists, concerts, setConcerts}) => {
             "Accept": "application/json",
             "Content-Type": "application/json"
         }
-        const options = {
+    const options = {
             method: "PATCH",
             headers,
             body: JSON.stringify({
@@ -63,16 +63,7 @@ const UpdateConcert = ({artists, concerts, setConcerts}) => {
         }
         fetch(`/concerts/${id}`, options)
         .then(res => res.json())
-        .then(data => {
-            const filteredConcerts = concerts.map((concert) => {
-                if (concert.id === data.id) {
-                    return data
-                } else {
-                    return concert
-                }
-            })
-            setConcerts(filteredConcerts)
-        })
+        .then(c)
         navigate("/my-profile")
         
     }

@@ -20,6 +20,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def age_limit 
+        users = []
+        render json: User.where("AGE < ?", params[:age]), status: :ok
+    end
+
 
     private 
 
